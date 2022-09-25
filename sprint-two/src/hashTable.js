@@ -6,11 +6,17 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
+  // hashing function returns an index for the given key
   var index = getIndexBelowMaxForKey(k, this._limit);
+  // make a call to the set method targeting the storage array, passing in index and value
+  this._storage.set(index, v);
 };
 
 HashTable.prototype.retrieve = function(k) {
+  // hashing function returns an index for the given key
   var index = getIndexBelowMaxForKey(k, this._limit);
+  // make a call to the get method targeting the storage array, passing in the index
+  return this._storage.get(index);
 };
 
 HashTable.prototype.remove = function(k) {
